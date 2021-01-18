@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Student as StudentModel;
 
 class Student extends Controller
 {
@@ -13,7 +14,8 @@ class Student extends Controller
      */
     public function index()
     {
-        //
+        $students = StudentModel::all();
+        return view('student',['students' => $students,'layout' => 'index']);
     }
 
     /**
@@ -23,7 +25,8 @@ class Student extends Controller
      */
     public function create()
     {
-        //
+        $students = StudentModel::all();
+        return view('student',['students' => $students,'layout' => 'create']);
     }
 
     /**
@@ -34,7 +37,13 @@ class Student extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $student = new StudentModel();
+        $student->firstname = $request->input('firstname');
+        $student->lastname = $request->input('lastname');
+        $student->age = $request->input('age');
+        $student->major = $request->input('major');
+        $student->save();
+        return redirect('/');
     }
 
     /**
@@ -45,7 +54,9 @@ class Student extends Controller
      */
     public function show($id)
     {
-        //
+        $student = StudentModel::find($id);
+        $students = StudentModel::all();
+        return view('student',['student' => $student,'students' => $students, 'layout' => 'show']);
     }
 
     /**
@@ -56,7 +67,9 @@ class Student extends Controller
      */
     public function edit($id)
     {
-        //
+        $student = StudentModel::find($id);
+        $students = StudentModel::all();
+        return view('student',['student' => $student,'students' => $students, 'layout' => 'edit']);
     }
 
     /**
@@ -68,7 +81,13 @@ class Student extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $student = StudentModel::find($id);
+        $student->firstname = $request->input('firstname');
+        $student->lastname = $request->input('lastname');
+        $student->age = $request->input('age');
+        $student->major = $request->input('major');
+        $student->save();
+        return redirect('/');
     }
 
     /**
@@ -79,6 +98,8 @@ class Student extends Controller
      */
     public function destroy($id)
     {
-        //
+        $student = Student::find($id);
+        $student->destroy();
+        return redirect('/');
     }
 }
