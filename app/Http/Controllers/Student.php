@@ -37,11 +37,21 @@ class Student extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'firstname' => 'bail|required|max:10',
+            'lastname' => 'required|max:10',
+            'age' => 'required',
+            'major' => 'required',
+            'subject' => 'required',
+            'credit' => 'required'
+        ]);
         $student = new StudentModel();
         $student->firstname = $request->input('firstname');
         $student->lastname = $request->input('lastname');
         $student->age = $request->input('age');
         $student->major = $request->input('major');
+        $student->subject = $request->input('subject');
+        $student->credit = $request->input('credit');
         $student->save();
         return redirect('/');
     }

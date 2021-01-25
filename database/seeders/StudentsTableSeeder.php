@@ -5,16 +5,15 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\Student as Student;
 
-class DatabaseSeeder extends Seeder
+class StudentsTableSeeder extends Seeder
 {
     /**
-     * Seed the application's database.
+     * Run the database seeds.
      *
      * @return void
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
-        Student::factory(15)->create();
+        Student::factory()->count(15)->create();
     }
 }

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Student;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +24,7 @@ Route::get('/', function () {
 Route::get('/',[Student::class, 'index']);
 Route::get('/create',[Student::class, 'create']);
 Route::get('/edit/{id}',[Student::class, 'edit']);
-//Route::get('/show/{id}',"Student@show");
+Route::get('/detail/{id}',[Student::class, 'show']);
+Route::get('/detail/{id}',[Student::class, 'show']);
 Route::post('/store',[Student::class, 'store']);
 Route::post('/update/{id}',[Student::class, 'update']);
