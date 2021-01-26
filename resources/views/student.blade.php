@@ -7,7 +7,7 @@
 
 </style>
 <body>
-@include('navbar')
+@include('layout.navbar')
 
 <div class="row header-container justify-content-center mt-4">
     <div class="header">
