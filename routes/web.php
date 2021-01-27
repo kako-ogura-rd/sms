@@ -21,14 +21,14 @@ Route::get('/', function () {
 });
 */
 
-Route::get('/',[Student::class, 'index']);
-Route::get('/create',[Student::class, 'create']);
+Route::get('/', [Student::class, 'index'])->name('home');
+Route::get('/detail/{id}',[Student::class, 'show']);
 Route::get('/edit/{id}',[Student::class, 'edit']);
-Route::get('/detail/{id}',[Student::class, 'show']);
-Route::get('/detail/{id}',[Student::class, 'show']);
-Route::post('/store',[Student::class, 'store']);
 Route::post('/update/{id}',[Student::class, 'update']);
 
 Auth::routes();
 
-Route::get('/', [Student::class, 'index'])->name('home');
+Route::group(['middleware' => 'auth'], function() {
+    Route::get('/create',[Student::class, 'create']);
+    Route::post('/store',[Student::class, 'store']);
+});

@@ -107,15 +107,11 @@
                     </div>
                     <div class="form-group">
                         <label>LastName</label>
-                        <input value="{{ $student->lastname }}"name="lastname" type="text" class="form-control" placeholder="lastname">
+                        <input value="{{ $student->lastname }}" name="lastname" type="text" class="form-control" placeholder="lastname">
                     </div>
                     <div class="form-group">
                         <label>Age</label>
-                        <input value="{{ $student->age }}"name="age" type="text" class="form-control" placeholder="age">
-                    </div>
-                    <div class="form-group">
-                        <label>Major</label>
-                        <input value="{{ $student->major }}"name="major" type="text" class="form-control" placeholder="major">
+                        <input value="{{ $student->age }}" name="age" type="text" class="form-control" placeholder="age">
                     </div>
                     <input type="submit" class="btn btn-info" value="Update">
                 </form>
