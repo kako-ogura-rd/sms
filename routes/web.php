@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Student;
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\EmployeeController as Employee;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,3 +28,7 @@ Route::get('/detail/{id}',[Student::class, 'show']);
 Route::get('/detail/{id}',[Student::class, 'show']);
 Route::post('/store',[Student::class, 'store']);
 Route::post('/update/{id}',[Student::class, 'update']);
+
+Auth::routes();
+
+Route::get('/', [Student::class, 'index'])->name('home');

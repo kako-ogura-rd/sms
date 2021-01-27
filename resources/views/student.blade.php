@@ -1,4 +1,4 @@
-@include('layout.header')
+@include('layouts.header')
 <style>
     .error
     {
@@ -7,7 +7,7 @@
 
 </style>
 <body>
-@include('layout.navbar')
+@include('layouts.app')
 
 <div class="row header-container justify-content-center mt-4">
     <div class="header">
@@ -16,6 +16,15 @@
 </div>
 
 @if($layout == 'index')
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
     <div class="container-fluid mt-4">
         <div class="row">
             <section class="col-md-7">@include('studentsList')</section>
@@ -31,21 +40,21 @@
                     @csrf
                     <div class="form-group">
                         <label>FirstName</label>
-                        <input name="firstname" type="text" class="form-control" placeholder="firstname">
+                        <input name="firstname" type="text" class="form-control" placeholder="firstname" required>
                         @if($errors->has('firstname'))
                         <span class="error">{{ $errors->first('firstname') }}</span>
                         @endif
                     </div>
                     <div class="form-group">
                         <label>LastName</label>
-                        <input name="lastname" type="text" class="form-control" placeholder="lastname">
+                        <input name="lastname" type="text" class="form-control" placeholder="lastname" required>
                         @if($errors->has('lastname'))
                             <span class="error">{{ $errors->first('lastname') }}</span>
                         @endif
                     </div>
                     <div class="form-group">
                         <label>Age</label>
-                        <input name="age" type="text" class="form-control" placeholder="age">
+                        <input name="age" type="text" class="form-control" placeholder="age" required>
                         @if($errors->has('age'))
                             <span class="error">{{ $errors->first('age') }}</span>
                         @endif
@@ -115,7 +124,7 @@
     </div>
 @endif
 </body>
-@include('layout.footer')
+@include('layouts.footer')
 
 <script>
     var majorOptions = [
