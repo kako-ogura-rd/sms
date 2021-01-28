@@ -10,6 +10,17 @@ class Student extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'firstname',
+        'lastname',
+        'age'
+    ];
+
+    public function courses() //関数名は複数形がベスト
+    {
+        return $this->hasMany(Courses::class);
+    }
+
     /** @return StudentsFactory */
     protected static function newFactory()
     {

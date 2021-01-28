@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Courses;
 use Illuminate\Http\Request;
 use App\Models\Student as StudentModel;
 
@@ -49,10 +50,15 @@ class Student extends Controller
         $student->firstname = $request->input('firstname');
         $student->lastname = $request->input('lastname');
         $student->age = $request->input('age');
-        $student->major = $request->input('major');
-        $student->subject = $request->input('subject');
-        $student->credit = $request->input('credit');
         $student->save();
+
+        $course = new Courses();
+        $course->student_id = $student->id;
+        $course->major = $request->input('major');
+        $course->subject = $request->input('subject');
+        $course->credit = $request->input('credit');
+        $course->save();
+
         return redirect('/');
     }
 

@@ -9,7 +9,6 @@
                 <th scope="col">lastname</th>
                 <th scope="col">firstname</th>
                 <th scope="col">age</th>
-                <th scope="col">major</th>
                 <th scope="col">operations</th>
             </tr>
             </thead>
@@ -19,7 +18,6 @@
                     <td>{{ $student->lastname }}</td>
                     <td>{{ $student->firstname }}</td>
                     <td>{{ $student->age }}</td>
-                    <td>{{ $student->major }}</td>
                     <td>
                         <a href="{{ url('/edit/'.$student->id) }}" class="btn btn-sm btn-warning">Edit</a>
                         <a id="detail" href="{{ url('/detail/'.$student->id) }}" class="btn btn-sm btn-info">Detail</a>
