@@ -68,11 +68,15 @@
                     </div>
                     <div class="form-group">
                         <label>Subject</label><br>
-                        <select class="form-control form-control-sm" id="subject" name="subject"></select>
+                        <select class="form-control form-control-sm subject" name="subject"></select>
+                        <select class="form-control form-control-sm subject" name="subject"></select>
+                        <select class="form-control form-control-sm subject" name="subject"></select>
                     </div>
                     <div class="form-group">
                         <label>Credit</label>
-                        <select class="form-control form-control-sm" name="credit" id="creditOptions"></select>
+                        <select class="form-control form-control-sm credit" name="credit"></select>
+                        <select class="form-control form-control-sm credit" name="credit"></select>
+                        <select class="form-control form-control-sm credit" name="credit"></select>
                     </div>
                     <input type="submit" class="btn btn-info" value="Save">
                     <input type="reset" class="btn btn-warning" value="Reset">
@@ -318,19 +322,32 @@
             var arr = [];
         }
 
-        var string="";
+        var string= [];
 
         for(i=0;i<arr.length;i++)
         {
             string=string+"<option value="+arr[i]+">"+arr[i]+"</option>";
         }
-        document.getElementById("subject").innerHTML=string;
+
+        const title = document.getElementsByClassName('subject');
+        for ( let j = 0; j < title.length; j ++ ){
+            console.log(title[j].innerHTML = string);
+        }
 
         var creditOptions = ['Select Credit',1,2,3,4,5];
-        creditOptions.forEach(function (value){
-            var option = document.createElement('option');
-            option.textContent = value;
-            document.getElementById('creditOptions').appendChild(option);
-        });
+        var credit_option = [];
+        for(k=0;k<creditOptions.length;k++)
+        {
+            credit_option =credit_option+"<option value="+creditOptions[k]+">"+creditOptions[k]+"</option>";
+        }
+        const credit = document.getElementsByClassName('credit');
+        for ( let l = 0; l < credit.length; l ++ ){
+            console.log(credit[l].innerHTML = credit_option);
+        }
+        // creditOptions.forEach(function (value){
+        //     var option = document.createElement('option');
+        //     option.textContent = value;
+        //     document.getElementById('creditOptions').appendChild(option);
+        // });
     }
 </script>

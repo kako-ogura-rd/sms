@@ -52,12 +52,24 @@ class Student extends Controller
         $student->age = $request->input('age');
         $student->save();
 
-        $course = new Courses();
-        $course->student_id = $student->id;
-        $course->major = $request->input('major');
-        $course->subject = $request->input('subject');
-        $course->credit = $request->input('credit');
-        $course->save();
+        foreach ($request->all() as $key => $val){
+            //送信されたキー（$key）に「subject」を含むものを判定
+            if(preg_match('/subject/',$key)){
+                //モデルをインスタンス化
+                $course = new Courses();
+                //ループさせた$valを入れる
+                $course->student_id = $student->id;
+                $course->major = $val;
+                $course->subject = $val;
+                $course->save();
+            }
+        }
+//        $course = new Courses();
+//        $course->student_id = $student->id;
+//        $course->major = $request->input('major');
+//        $course->subject = $request->input('subject');
+//        //$course->credit = $request->input('credit');
+//        $course->save();
 
         return redirect('/');
     }
